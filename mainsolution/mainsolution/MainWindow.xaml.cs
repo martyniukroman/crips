@@ -20,8 +20,8 @@ namespace mainsolution {
     public partial class MainWindow : Window {
 
         List<Ellipse> Elipses = new List<Ellipse>();
-        Ellipse ElipseTmp;
-        CripsAboveClass CripTmp = new CripWorker();
+        
+        
         int Counter = 0;
 
         public MainWindow() {
@@ -34,7 +34,11 @@ namespace mainsolution {
 
         private void button_Click(object sender, RoutedEventArgs e) {
 
-            ElipseTmp = new Ellipse();
+            CripsAboveClass CripTmp = new CripWorker();
+            Ellipse ElipseTmp = new Ellipse();
+            Counter++;
+
+            
 
             //CripsAboveClass TESTCRIPTMP = CripTmp.Clone() as CripDefender; // kostil
 
@@ -43,13 +47,19 @@ namespace mainsolution {
             ElipseTmp.Height = 50;
 
             Elipses.Add(ElipseTmp);
-            Counter++;
 
             MessageBox.Show(Counter.ToString());
 
-            Canvas.SetTop(Elipses[Counter - 1], 10*Counter);
-            Canvas.SetLeft(Elipses[Counter - 1], 10*Counter);
-            CanvasMain.Children.Add(Elipses[Counter - 1]);
+           
+            CanvasMain.Children.Add(Elipses.Last());
+            Canvas.SetTop(Elipses[Counter - 1], 10 * Counter);
+            Canvas.SetLeft(Elipses[Counter - 1], 10 * Counter);
+
+            /*
+            Canvas.SetTop(CripTmp.ElipseModel, 10 * Counter);
+            Canvas.SetLeft(CripTmp.ElipseModel, 10 * Counter);
+            CanvasMain.Children.Add(CripTmp.ElipseModel);
+            */
         }
     }
 }
