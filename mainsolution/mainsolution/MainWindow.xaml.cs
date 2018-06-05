@@ -19,8 +19,12 @@ namespace mainsolution {
     /// </summary>
     public partial class MainWindow : Window {
 
-        List<Ellipse> Ellipses = new List<Ellipse>();
-        List<CripsAboveClass> Crips = new List<CripsAboveClass>();
+        public List<Ellipse> Ellipses = new List<Ellipse>();
+        public List<CripsAboveClass> Crips = new List<CripsAboveClass>();
+        public int WorkersCounter = 0;
+        public int SoldersCounter = 0;
+        public int DefendersCounter = 0;
+        public int Resourses = 0;
 
         int Counter = 0;
 
@@ -76,9 +80,6 @@ namespace mainsolution {
             if (Crips[index] is CripDefender) {
                 LabelSpecial.Content = "Attack: " + (Crips[index] as CripDefender).Attack;
             }
-
-            ElipsePreview = Crips[index].ElipseModel;
-
 
         }
 
