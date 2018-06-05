@@ -14,7 +14,7 @@ namespace mainsolution {
         public int y { set; get;}
     }
 
-     abstract class CripsAboveClass {
+     abstract class CripsAboveClass : ICloneable{
         
         public int Hp { set; get; }     
         public int Speed { set; get; }
@@ -29,6 +29,21 @@ namespace mainsolution {
 
         public CripsAboveClass(){
             IndeficatorCounter++;
+        }
+
+        public object Clone() {
+
+            IndeficatorCounter++;
+
+            return new CripDefender() {
+
+                Hp = this.Hp,
+                Speed = this.Speed,
+                ElipseModel = this.ElipseModel,
+                Indeficator = IndeficatorCounter,
+                Location = this.Location,
+
+            };
         }
     }
 

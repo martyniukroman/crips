@@ -21,29 +21,31 @@ namespace mainsolution {
 
         List<Ellipse> Elipses = new List<Ellipse>();
         Ellipse ElipseTmp;
-        CripWorker CripWorkerTmp = new CripWorker();
+        CripsAboveClass CripTmp = new CripWorker();
         int Counter = 0;
 
         public MainWindow() {
             InitializeComponent();
 
-            CripWorker test = new CripWorker();
+            //CripWorker test = new CripWorker();
            // mainelipse = test.ElipseModel;
 
         }
 
         private void button_Click(object sender, RoutedEventArgs e) {
 
-            CripsAboveClass TESTCRIPTMP = CripWorkerTmp.Clone() as CripWorker; // kostil
+            ElipseTmp = new Ellipse();
 
-            ElipseTmp = TESTCRIPTMP.ElipseModel;
+            //CripsAboveClass TESTCRIPTMP = CripTmp.Clone() as CripDefender; // kostil
+
+            ElipseTmp = CripTmp.ElipseModel;
             ElipseTmp.Width = 50;
             ElipseTmp.Height = 50;
 
             Elipses.Add(ElipseTmp);
             Counter++;
 
-          //MessageBox.Show(Counter.ToString());
+            MessageBox.Show(Counter.ToString());
 
             Canvas.SetTop(Elipses[Counter - 1], 10*Counter);
             Canvas.SetLeft(Elipses[Counter - 1], 10*Counter);
