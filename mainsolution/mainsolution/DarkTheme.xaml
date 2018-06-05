@@ -1,0 +1,27 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:mainsolution">
+
+    <SolidColorBrush x:Key="Dark" Color="#333333" />
+    <SolidColorBrush x:Key="White" Color="#e5e5e5" />
+
+    <Style x:Key="StyleLabel" TargetType="Label">
+        <Setter Property="Foreground" Value="{StaticResource White}"/>
+    </Style>
+    
+    <Style x:Key="StyleStackPanel" TargetType="StackPanel">
+        <Setter Property="Background" Value="{StaticResource Dark}"/>
+    </Style>
+
+    <Style x:Key="StyleMenu" TargetType="Menu">
+        <Setter Property="Background" Value="{StaticResource Dark}"/>
+        <Setter Property="Foreground" Value="{StaticResource White}"/>
+    </Style>
+
+    <Style x:Key="StyleMenuItem" TargetType="MenuItem">
+        <Setter Property="Background" Value="{StaticResource Dark}"/>
+        <Setter Property="Foreground" Value="{StaticResource White}"/>
+    </Style>
+
+
+</ResourceDictionary>

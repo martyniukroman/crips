@@ -27,8 +27,11 @@ namespace mainsolution {
         public MainWindow() {
             InitializeComponent();
 
+            ResourceDictionary RD = new ResourceDictionary() { Source = new Uri("WhiteTheme.xaml", UriKind.Relative) };
+            this.Resources.MergedDictionaries.Add(RD);
+
             //CripWorker test = new CripWorker();
-           // mainelipse = test.ElipseModel;
+            // mainelipse = test.ElipseModel;
 
         }
 
@@ -42,7 +45,8 @@ namespace mainsolution {
             ElipseTmp.Width = 50; //set width
             ElipseTmp.Height = 50; //set hight
 
-            CripTmp.ElipseModel.MouseEnter += ElipseModel_MouseEnter;
+           // CripTmp.ElipseModel.MouseEnter += ElipseModel_MouseEnter;
+            CripTmp.ElipseModel.MouseDown += ElipseModel_MouseEnter;
 
             Ellipses.Add(ElipseTmp); // adding to elipses list
             Crips.Add(CripTmp); // adding to crips list
@@ -87,6 +91,16 @@ namespace mainsolution {
 
         private void SpawnDefender_Click(object sender, RoutedEventArgs e) {
             SpawnCrip(new CripDefender());
+        }
+
+        private void ThemeWhite_Click(object sender, RoutedEventArgs e) {
+            ResourceDictionary RD = new ResourceDictionary() { Source = new Uri("WhiteTheme.xaml", UriKind.Relative) };
+            this.Resources.MergedDictionaries.Add(RD);
+        }
+
+        private void ThemeDark_Click(object sender, RoutedEventArgs e) {
+            ResourceDictionary RD = new ResourceDictionary() { Source = new Uri("DarkTheme.xaml", UriKind.Relative) };
+            this.Resources.MergedDictionaries.Add(RD);
         }
 
 
