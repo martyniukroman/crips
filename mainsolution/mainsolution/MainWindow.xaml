@@ -5,12 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:mainsolution"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
+        xmlns:p="clr-namespace:mainsolution.Properties" 
+        Title="title" Height="350" Width="525">
+    <Grid x:Name="grid1">
+        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="178,140,0,0" VerticalAlignment="Top" Width="106" Height="45" Click="button_Click"/>
 
-        <Ellipse Width="200" Height="200" Fill="LightPink"
-        StrokeThickness="8" StrokeDashArray="2 2"
-        Stroke="Gray" StrokeDashCap="Round" />
+        <Canvas Name="CanvasMain"></Canvas>
+        
+        <!--<Ellipse Name="mainelipse" />-->
+        
         
         
     </Grid>

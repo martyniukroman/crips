@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media;
 using System.Windows.Shapes;
 
 namespace mainsolution {
@@ -28,6 +29,8 @@ namespace mainsolution {
 
         public CripsAboveClass(){
             IndeficatorCounter++;
+          //  ElipseModel.Width = Convert.ToInt32(50);
+          //  ElipseModel.Height = Convert.ToInt32(50);
         }
     }
 
@@ -47,6 +50,13 @@ namespace mainsolution {
             Cepacity = 100;
 
             ElipseModel = new Ellipse();
+
+            ElipseModel.Fill = new SolidColorBrush(Colors.Plum);
+            ElipseModel.Stroke = new SolidColorBrush(Colors.SkyBlue);
+
+            ElipseModel.StrokeThickness = 4;
+            ElipseModel.StrokeDashArray = new DoubleCollection() { 2 };
+            ElipseModel.StrokeDashCap = PenLineCap.Round;
         }
 
     }
