@@ -14,7 +14,7 @@ namespace mainsolution {
         public int y { set; get;}
     }
 
-     abstract public class CripsAboveClass : ICloneable{
+     abstract public class CripsAboveClass{
         
         public int Hp { set; get; }     
         public int Speed { set; get; }
@@ -29,21 +29,6 @@ namespace mainsolution {
 
         public CripsAboveClass(){
             IndeficatorCounter++;
-        }
-
-        public object Clone() {
-
-            IndeficatorCounter++;
-
-            return new CripDefender() {
-
-                Hp = this.Hp,
-                Speed = this.Speed,
-                ElipseModel = this.ElipseModel,
-                Indeficator = IndeficatorCounter,
-                Location = this.Location,
-
-            };
         }
     }
 
@@ -64,9 +49,10 @@ namespace mainsolution {
      
     */
 
-    class CripWorker : CripsAboveClass , ICloneable {
+    class CripWorker : CripsAboveClass {
 
         public int Cepacity { set; get; }
+        public int Absorbed { set; get; }
 
         public CripWorker() {
 
@@ -75,6 +61,7 @@ namespace mainsolution {
             Location.X = 50;
             Location.Y = 50;
 
+            Absorbed = 0;
             Hp = 200;
             Speed = 50;
             Cepacity = 50;
@@ -89,24 +76,13 @@ namespace mainsolution {
             ElipseModel.StrokeDashCap = PenLineCap.Round;
         }
 
-        public object Clone() {
-
-            IndeficatorCounter++;
-
-            return new CripWorker() {
-
-                Hp = this.Hp,
-                Speed = this.Speed,
-                Cepacity = this.Cepacity,
-                ElipseModel = this.ElipseModel,
-                Indeficator = IndeficatorCounter,
-                Location = this.Location,        
-
-            };
+        public override string ToString() {
+            return "Worker";
         }
+
     }
 
-    class CripSolder : CripsAboveClass, ICloneable {
+    class CripSolder : CripsAboveClass {
 
         public int Attack { set; get; }
 
@@ -131,24 +107,13 @@ namespace mainsolution {
             ElipseModel.StrokeDashCap = PenLineCap.Triangle;
         }
 
-        public object Clone() {
-
-            IndeficatorCounter++;
-
-            return new CripSolder() {
-
-                Hp = this.Hp,
-                Speed = this.Speed,
-                Attack = this.Attack,
-                ElipseModel = this.ElipseModel,
-                Indeficator = IndeficatorCounter,
-                Location = this.Location,
-
-            };
+        public override string ToString() {
+            return "Solder";
         }
+
     }
 
-    class CripDefender : CripsAboveClass, ICloneable {
+    class CripDefender : CripsAboveClass {
 
         public int Attack { set; get; }
 
@@ -173,21 +138,10 @@ namespace mainsolution {
             ElipseModel.StrokeDashCap = PenLineCap.Flat;
         }
 
-        public object Clone() {
-
-            IndeficatorCounter++;
-
-            return new CripDefender() {
-
-                Hp = this.Hp,
-                Speed = this.Speed,
-                Attack = this.Attack,
-                ElipseModel = this.ElipseModel,
-                Indeficator = IndeficatorCounter,
-                Location = this.Location,
-
-            };
+        public override string ToString() {
+            return "Defender";
         }
+
     }
 
 }

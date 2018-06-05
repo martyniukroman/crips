@@ -20,7 +20,7 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="150"/>
         </Grid.ColumnDefinitions>
-
+ 
         <Canvas Grid.RowSpan="3" Name="CanvasMain" Background="Aqua" />
 
         <Menu Grid.Row="3" FontSize="17" >
@@ -29,7 +29,7 @@
                 
             </MenuItem>
             
-            <MenuItem Header="Develop">
+            <MenuItem Header="Develop">   
                 <MenuItem Header="Spawn">
                     <MenuItem Name="SpawnWorker" Header="Worker" Click="SpawnWorker_Click"></MenuItem>
                     <MenuItem Name="SpawnSolder" Header="Solder" Click="SpawnSolder_Click"></MenuItem>
@@ -39,7 +39,14 @@
 
         </Menu>
 
+        <StackPanel Grid.Row="0" Grid.Column="1" Grid.RowSpan="1" Background="Pink">
 
+            <Label Name="LabelType" FontSize="18">Type</Label> 
+            <Label Name="LabelHp" FontSize="18">Hp:</Label>
+            <Label Name="LabelSpeed" FontSize="18">Speed:</Label>
+            <Label Name="LabelSpecial" FontSize="18">Special:</Label>
+
+        </StackPanel>
 
     </Grid>
 </Window>

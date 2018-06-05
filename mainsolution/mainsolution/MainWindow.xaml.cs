@@ -19,7 +19,7 @@ namespace mainsolution {
     /// </summary>
     public partial class MainWindow : Window {
 
-        List<Ellipse> Elipses = new List<Ellipse>();
+        List<Ellipse> Ellipses = new List<Ellipse>();
         List<CripsAboveClass> Crips = new List<CripsAboveClass>();
 
         int Counter = 0;
@@ -42,13 +42,39 @@ namespace mainsolution {
             ElipseTmp.Width = 50; //set width
             ElipseTmp.Height = 50; //set hight
 
-            Elipses.Add(ElipseTmp); // adding to elipses list
+            CripTmp.ElipseModel.MouseEnter += ElipseModel_MouseEnter;
+
+            Ellipses.Add(ElipseTmp); // adding to elipses list
             Crips.Add(CripTmp); // adding to crips list
 
-            CanvasMain.Children.Add(Elipses.Last()); // showing our elips
-            Canvas.SetTop(Elipses.Last(), 10 * Counter); // set position
-            Canvas.SetLeft(Elipses.Last(), 10 * Counter); // set positon
+            CanvasMain.Children.Add(Ellipses.Last()); // showing our elips
+            Canvas.SetTop(Ellipses.Last(), 10 * Counter * 5); // set position
+            Canvas.SetLeft(Ellipses.Last(), 10 * Counter * 5); // set positon
 
+            this.Title += CripTmp.Indeficator;
+        }
+
+        private void ElipseModel_MouseEnter(object sender, MouseEventArgs e) {
+
+           int index = Ellipses.IndexOf((sender as Ellipse));
+
+            LabelType.Content = Crips[index].ToString();
+            LabelHp.Content = "Hp: " + Crips[index].Hp;
+            LabelSpeed.Content = "Speed: " + Crips[index].Speed;
+
+
+            if (Crips[index] is CripWorker) {
+                LabelSpecial.Content = "Absorbed: " + (Crips[index] as CripWorker).Absorbed + " | " + (Crips[index] as CripWorker).Cepacity;
+            }
+            if (Crips[index] is CripSolder) {
+                LabelSpecial.Content = "Attack: " + (Crips[index] as CripSolder).Attack;
+            }
+            if (Crips[index] is CripDefender) {
+                LabelSpecial.Content = "Attack: " + (Crips[index] as CripDefender).Attack;
+            }
+
+
+            
         }
 
         private void SpawnWorker_Click(object sender, RoutedEventArgs e) {
@@ -62,7 +88,6 @@ namespace mainsolution {
         private void SpawnDefender_Click(object sender, RoutedEventArgs e) {
             SpawnCrip(new CripDefender());
         }
-
 
 
 
