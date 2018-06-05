@@ -8,13 +8,14 @@
         xmlns:p="clr-namespace:mainsolution.Properties" 
         Title="title" Height="350" Width="525">
     <Grid x:Name="grid1">
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="178,140,0,0" VerticalAlignment="Top" Width="106" Height="45" Click="button_Click"/>
 
-        <Canvas Name="CanvasMain"></Canvas>
-        
+        <Canvas Name="CanvasMain">
+            <Button x:Name="button" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="106" Height="45" Click="button_Click" Canvas.Left="401" Canvas.Top="10"/>
+        </Canvas>
+
         <!--<Ellipse Name="mainelipse" />-->
-        
-        
-        
+
+
+
     </Grid>
 </Window>

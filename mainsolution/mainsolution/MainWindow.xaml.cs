@@ -20,7 +20,7 @@ namespace mainsolution {
     public partial class MainWindow : Window {
 
         List<Ellipse> Elipses = new List<Ellipse>();
-        //Ellipse ElipseTmp;
+        Ellipse ElipseTmp;
         CripWorker CripWorkerTmp = new CripWorker();
         int Counter = 0;
 
@@ -34,29 +34,20 @@ namespace mainsolution {
 
         private void button_Click(object sender, RoutedEventArgs e) {
 
-            Ellipse ElipseTmp;
-            ElipseTmp = new Ellipse();
-                        //ElipseTmp = CripWorkerTmp.ElipseModel;
+            CripsAboveClass TESTCRIPTMP = CripWorkerTmp.Clone() as CripWorker; // kostil
 
+            ElipseTmp = TESTCRIPTMP.ElipseModel;
+            ElipseTmp.Width = 50;
+            ElipseTmp.Height = 50;
 
-            Ellipse ElipseModel = new Ellipse();
-
-            ElipseModel.Fill = new SolidColorBrush(Colors.Plum);
-            ElipseModel.Stroke = new SolidColorBrush(Colors.SkyBlue);
-
-            ElipseModel.StrokeThickness = 4;
-            ElipseModel.StrokeDashArray = new DoubleCollection() { 2 };
-            ElipseModel.StrokeDashCap = PenLineCap.Round;
-            ElipseModel.Height = 50;
-            ElipseModel.Width = 50;
-            //Elipses.Add(ElipseTmp);
+            Elipses.Add(ElipseTmp);
             Counter++;
 
-           // MessageBox.Show(Counter.ToString());
+          //MessageBox.Show(Counter.ToString());
 
-            Canvas.SetTop(ElipseModel, 10*Counter);
-            Canvas.SetLeft(ElipseModel, 10*Counter);
-            CanvasMain.Children.Add(ElipseModel);
+            Canvas.SetTop(Elipses[Counter - 1], 10*Counter);
+            Canvas.SetLeft(Elipses[Counter - 1], 10*Counter);
+            CanvasMain.Children.Add(Elipses[Counter - 1]);
         }
     }
 }
