@@ -14,7 +14,7 @@ namespace mainsolution {
         public int y { set; get;}
     }
 
-     abstract class CripsAboveClass : ICloneable{
+     abstract public class CripsAboveClass : ICloneable{
         
         public int Hp { set; get; }     
         public int Speed { set; get; }

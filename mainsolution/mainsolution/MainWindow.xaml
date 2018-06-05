@@ -6,14 +6,38 @@
         xmlns:local="clr-namespace:mainsolution"
         mc:Ignorable="d"
         xmlns:p="clr-namespace:mainsolution.Properties" 
-        Title="title" Height="350" Width="525">
-    <Grid x:Name="grid1">
+        Title="title" Height="500" Width="800">
+    <Grid x:Name="GridMain">
 
-        <Canvas Name="CanvasMain">
-            <Button x:Name="button" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="106" Height="45" Click="button_Click" Canvas.Left="401" Canvas.Top="10"/>
-        </Canvas>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
 
-        <!--<Ellipse Name="mainelipse" />-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="150"/>
+        </Grid.ColumnDefinitions>
+
+        <Canvas Grid.RowSpan="3" Name="CanvasMain" Background="Aqua" />
+
+        <Menu Grid.Row="3" FontSize="17" >
+ 
+            <MenuItem Header="Menu">
+                
+            </MenuItem>
+            
+            <MenuItem Header="Develop">
+                <MenuItem Header="Spawn">
+                    <MenuItem Name="SpawnWorker" Header="Worker" Click="SpawnWorker_Click"></MenuItem>
+                    <MenuItem Name="SpawnSolder" Header="Solder" Click="SpawnSolder_Click"></MenuItem>
+                    <MenuItem Name="SpawnDefender" Header="Defender" Click="SpawnDefender_Click"></MenuItem>
+                </MenuItem>
+            </MenuItem>
+
+        </Menu>
 
 
 

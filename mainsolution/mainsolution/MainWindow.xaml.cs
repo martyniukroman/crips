@@ -20,8 +20,8 @@ namespace mainsolution {
     public partial class MainWindow : Window {
 
         List<Ellipse> Elipses = new List<Ellipse>();
-        
-        
+        List<CripsAboveClass> Crips = new List<CripsAboveClass>();
+
         int Counter = 0;
 
         public MainWindow() {
@@ -32,34 +32,41 @@ namespace mainsolution {
 
         }
 
-        private void button_Click(object sender, RoutedEventArgs e) {
+        public void SpawnCrip(CripsAboveClass CripTypeChild) {
 
-            CripsAboveClass CripTmp = new CripWorker();
-            Ellipse ElipseTmp = new Ellipse();
-            Counter++;
+            CripsAboveClass CripTmp = CripTypeChild; // setting CripType from caller
+            Ellipse ElipseTmp = new Ellipse(); // Highlighting memory for elips crip model
+            Counter++; 
 
-            
+            ElipseTmp = CripTmp.ElipseModel; //setting new crip model to tmp elipse
+            ElipseTmp.Width = 50; //set width
+            ElipseTmp.Height = 50; //set hight
 
-            //CripsAboveClass TESTCRIPTMP = CripTmp.Clone() as CripDefender; // kostil
+            Elipses.Add(ElipseTmp); // adding to elipses list
+            Crips.Add(CripTmp); // adding to crips list
 
-            ElipseTmp = CripTmp.ElipseModel;
-            ElipseTmp.Width = 50;
-            ElipseTmp.Height = 50;
+            CanvasMain.Children.Add(Elipses.Last()); // showing our elips
+            Canvas.SetTop(Elipses.Last(), 10 * Counter); // set position
+            Canvas.SetLeft(Elipses.Last(), 10 * Counter); // set positon
 
-            Elipses.Add(ElipseTmp);
-
-            MessageBox.Show(Counter.ToString());
-
-           
-            CanvasMain.Children.Add(Elipses.Last());
-            Canvas.SetTop(Elipses[Counter - 1], 10 * Counter);
-            Canvas.SetLeft(Elipses[Counter - 1], 10 * Counter);
-
-            /*
-            Canvas.SetTop(CripTmp.ElipseModel, 10 * Counter);
-            Canvas.SetLeft(CripTmp.ElipseModel, 10 * Counter);
-            CanvasMain.Children.Add(CripTmp.ElipseModel);
-            */
         }
+
+        private void SpawnWorker_Click(object sender, RoutedEventArgs e) {
+            SpawnCrip(new CripWorker());
+        }
+
+        private void SpawnSolder_Click(object sender, RoutedEventArgs e) {
+            SpawnCrip(new CripSolder());
+        }
+
+        private void SpawnDefender_Click(object sender, RoutedEventArgs e) {
+            SpawnCrip(new CripDefender());
+        }
+
+
+
+
+
+        //finish
     }
 }
