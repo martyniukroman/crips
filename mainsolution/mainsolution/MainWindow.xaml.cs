@@ -68,7 +68,7 @@ namespace mainsolution {
 
 
             if (Crips[index] is CripWorker) {
-                LabelSpecial.Content = "Absorbed: " + (Crips[index] as CripWorker).Absorbed + " | " + (Crips[index] as CripWorker).Cepacity;
+                LabelSpecial.Content = "Absorbed: " + (Crips[index] as CripWorker).Absorbed + "/" + (Crips[index] as CripWorker).Cepacity;
             }
             if (Crips[index] is CripSolder) {
                 LabelSpecial.Content = "Attack: " + (Crips[index] as CripSolder).Attack;
@@ -77,8 +77,9 @@ namespace mainsolution {
                 LabelSpecial.Content = "Attack: " + (Crips[index] as CripDefender).Attack;
             }
 
+            ElipsePreview = Crips[index].ElipseModel;
 
-            
+
         }
 
         private void SpawnWorker_Click(object sender, RoutedEventArgs e) {

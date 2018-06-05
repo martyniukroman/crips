@@ -13,6 +13,10 @@
         <Setter Property="Background" Value="{StaticResource Dark}"/>
     </Style>
 
+    <Style x:Key="StyleBorder" TargetType="Border">
+        <Setter Property="Background" Value="{StaticResource Dark}"/>
+    </Style>
+
     <Style x:Key="StyleMenu" TargetType="Menu">
         <Setter Property="Background" Value="{StaticResource Dark}"/>
         <Setter Property="Foreground" Value="{StaticResource White}"/>
