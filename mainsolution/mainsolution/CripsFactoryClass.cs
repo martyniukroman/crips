@@ -27,6 +27,21 @@ namespace mainsolution {
 
         //todo async public void MoveTo();
 
+        public void MoveTo(Point Destenation) {
+            if (this.Location.X > Destenation.X) {
+                this.Location.X++;
+            }
+            if (this.Location.X < Destenation.X) {
+                this.Location.X--;
+            }
+            if (this.Location.Y > Destenation.Y) {
+                this.Location.Y++;
+            }
+            if (this.Location.Y < Destenation.Y) {
+                this.Location.Y--;
+            }
+        }
+
         public CripsAboveClass(){
             IndeficatorCounter++;
         }

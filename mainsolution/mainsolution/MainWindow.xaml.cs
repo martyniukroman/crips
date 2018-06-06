@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -38,6 +39,9 @@ namespace mainsolution {
             //CripWorker test = new CripWorker();
             // mainelipse = test.ElipseModel;
 
+            TimerCallback Tm = new TimerCallback(TimersAction);
+            Timer timer = new Timer(Tm, SelectedCrip, 5000, 2000);
+            
         }
 
         public void SpawnCrip(CripsAboveClass CripTypeChild) {
@@ -183,7 +187,25 @@ namespace mainsolution {
             }
         }
 
+        public void TimersAction(object obj) {
 
+            move();
+
+        }
+
+        public void button_Click(object sender, RoutedEventArgs e) {
+
+            move();
+
+        }
+
+        public void move() {
+            if (SelectedCrip != null) {
+                //MessageBox.Show("as");
+                Canvas.SetTop(SelectedCrip.ElipseModel, SelectedCrip.Location.X += 10);
+                Canvas.SetLeft(SelectedCrip.ElipseModel, SelectedCrip.Location.Y += 10);
+            }
+        } 
 
 
 
