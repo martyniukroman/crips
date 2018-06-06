@@ -21,6 +21,7 @@ namespace mainsolution {
 
         public List<Ellipse> Ellipses = new List<Ellipse>();
         public List<CripsAboveClass> Crips = new List<CripsAboveClass>();
+        public CripsAboveClass SelectedCrip;
         public int WorkersCounter = 0;
         public int SoldersCounter = 0;
         public int DefendersCounter = 0;
@@ -49,8 +50,9 @@ namespace mainsolution {
             ElipseTmp.Width = 50; //set width
             ElipseTmp.Height = 50; //set hight
 
-           // CripTmp.ElipseModel.MouseEnter += ElipseModel_MouseEnter;
-            CripTmp.ElipseModel.MouseDown += ElipseModel_MouseEnter;
+            // CripTmp.ElipseModel.MouseEnter += ElipseModel_MouseEnter;
+            CripTmp.ElipseModel.MouseLeftButtonDown += ElipseModel_MouseEnter;
+            CripTmp.ElipseModel.MouseRightButtonDown += ElipseModel_MouseRightButtonDown;
 
             Ellipses.Add(ElipseTmp); // adding to elipses list
             Crips.Add(CripTmp); // adding to crips list
@@ -62,24 +64,64 @@ namespace mainsolution {
             this.Title += CripTmp.Indeficator;
         }
 
+        private void ElipseModel_MouseRightButtonDown(object sender, MouseButtonEventArgs e) {
+
+            if (SelectedCrip is CripWorker) {
+                SelectedCrip.ElipseModel.Stroke = new SolidColorBrush(Colors.DarkOrchid);
+            }
+            if (SelectedCrip is CripSolder) {
+                SelectedCrip.ElipseModel.Stroke = new SolidColorBrush(Colors.DodgerBlue);
+            }
+            if (SelectedCrip is CripDefender) {
+                SelectedCrip.ElipseModel.Stroke = new SolidColorBrush(Colors.LightSeaGreen);
+            }
+
+            SliderChange.Value = 0;     
+            SelectedCrip = null;
+
+            LabelType.Content = "Type";
+            LabelHp.Content = "Hp";
+            LabelSpecial.Content = "Special";
+            LabelSpeed.Content = "Speed";
+
+        }
+
         private void ElipseModel_MouseEnter(object sender, MouseEventArgs e) {
 
-           int index = Ellipses.IndexOf((sender as Ellipse));
+            if(SelectedCrip != null)
+            SliderChange.Value = SelectedCrip.Speed;
 
-            LabelType.Content = Crips[index].ToString();
-            LabelHp.Content = "Hp: " + Crips[index].Hp;
-            LabelSpeed.Content = "Speed: " + Crips[index].Speed;
+            if (SelectedCrip is CripWorker) {
+                SelectedCrip.ElipseModel.Stroke = new SolidColorBrush(Colors.DarkOrchid);
+            }
+            if (SelectedCrip is CripSolder) {
+                SelectedCrip.ElipseModel.Stroke = new SolidColorBrush(Colors.DodgerBlue);
+            }
+            if (SelectedCrip is CripDefender) {
+                SelectedCrip.ElipseModel.Stroke = new SolidColorBrush(Colors.LightSeaGreen);
+            }
+
+            int index = Ellipses.IndexOf((sender as Ellipse));
+
+            SelectedCrip = Crips[index];
+
+            LabelType.Content = SelectedCrip.ToString();
+            LabelHp.Content = "Hp: " + SelectedCrip.Hp;
+            LabelSpeed.Content = "Speed: " + SelectedCrip.Speed;
 
 
-            if (Crips[index] is CripWorker) {
-                LabelSpecial.Content = "Absorbed: " + (Crips[index] as CripWorker).Absorbed + "/" + (Crips[index] as CripWorker).Cepacity;
+            if (SelectedCrip is CripWorker) {
+                LabelSpecial.Content = "Absorbed: " + (SelectedCrip as CripWorker).Absorbed + "/" + (SelectedCrip as CripWorker).Cepacity;
             }
-            if (Crips[index] is CripSolder) {
-                LabelSpecial.Content = "Attack: " + (Crips[index] as CripSolder).Attack;
+            if (SelectedCrip is CripSolder) {
+                LabelSpecial.Content = "Attack: " + (SelectedCrip as CripSolder).Attack;
             }
-            if (Crips[index] is CripDefender) {
-                LabelSpecial.Content = "Attack: " + (Crips[index] as CripDefender).Attack;
+            if (SelectedCrip is CripDefender) {
+                LabelSpecial.Content = "Attack: " + (SelectedCrip as CripDefender).Attack;
             }
+
+            SelectedCrip.ElipseModel.Stroke = new SolidColorBrush(Colors.Gold);
+
 
         }
 
@@ -104,6 +146,23 @@ namespace mainsolution {
             ResourceDictionary RD = new ResourceDictionary() { Source = new Uri("DarkTheme.xaml", UriKind.Relative) };
             this.Resources.MergedDictionaries.Add(RD);
         }
+
+        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e) {
+
+            if (SelectedCrip != null) {
+
+                int max = 250;
+
+                SelectedCrip.Hp = max - Convert.ToInt32((sender as Slider).Value);
+                SelectedCrip.Speed = Convert.ToInt32((sender as Slider).Value);
+
+                LabelHpToCepacityPrew.Content = SelectedCrip.Hp + " / " + SelectedCrip.Speed;
+            }
+            else {
+                //LabelHpToCepacityPrew.Content = "200 / 50";
+            }
+        }
+
 
 
 

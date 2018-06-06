@@ -93,9 +93,9 @@ namespace mainsolution {
             Location.X = 50;
             Location.Y = 50;
 
-            Hp = 150;
+            Hp = 200;
             Speed = 50;
-            Attack = 100;
+            Attack = 50;
 
             ElipseModel = new Ellipse();
 
@@ -124,9 +124,9 @@ namespace mainsolution {
             Location.X = 50;
             Location.Y = 50;
 
-            Hp = 100;
-            Speed = 100;
-            Attack = 100;
+            Hp = 200;
+            Speed = 500;
+            Attack = 50;
 
             ElipseModel = new Ellipse();
 
@@ -135,7 +135,7 @@ namespace mainsolution {
 
             ElipseModel.StrokeThickness = 5;
             ElipseModel.StrokeDashArray = new DoubleCollection() { 2 };
-            ElipseModel.StrokeDashCap = PenLineCap.Flat;
+            ElipseModel.StrokeDashCap = PenLineCap.Triangle;
         }
 
         public override string ToString() {

@@ -52,7 +52,7 @@
 
         <StackPanel Grid.Row="0" Grid.Column="1" Grid.RowSpan="1" Style="{DynamicResource StyleStackPanel}">
 
-            <Label Margin="2,-4,2,-4" Style="{DynamicResource St yleLabel}" Name="LabelPopulation" HorizontalAlignment="Center" FontSize="18"> Population:</Label>
+            <Label Margin="2,-4,2,-4" Style="{DynamicResource StyleLabel}" Name="LabelPopulation" HorizontalAlignment="Center" FontSize="18"> Population:</Label>
             <Label Margin="2,-16,2,-16" Style="{DynamicResource StyleLabel}" FontSize="20">------------------</Label>
             <Label Margin="2,-4,2,-4" Style="{DynamicResource StyleLabel}" Name="LabelWorkers" FontSize="18">Workers:</Label>
             <Label Margin="2,-4,2,-4" Style="{DynamicResource StyleLabel}" Name="LabelSolders" FontSize="18">Solders:</Label>
@@ -62,21 +62,27 @@
             <Label Margin="2,-18,2,-18" Style="{DynamicResource StyleLabel}" FontSize="20">------------------</Label>
 
         </StackPanel>
-
+            
         <StackPanel Grid.Row="1" Grid.Column="1" Grid.RowSpan="1" Style="{DynamicResource StyleStackPanel}">
  
            <!-- sliders -->
+
+            <Label Margin="2,20,2,-15" Style="{DynamicResource StyleLabel}" FontSize="18">-------------------</Label>
+            <Label Name="LabelHpToCepacity" Margin="0,-5,0,-5" HorizontalAlignment="Center" Style="{DynamicResource StyleLabel}" FontSize="18">Hp To Speed</Label>
+            <Slider Name="SliderChange" Margin="5" Minimum="50" Maximum="150" ValueChanged="Slider_ValueChanged"></Slider>
+            <Label Name="LabelHpToCepacityPrew" Margin="0,-10,0,-5" HorizontalAlignment="Center" Style="{DynamicResource StyleLabel}" FontSize="18">200 / 50</Label>
+            <Label Margin="2,-15,2,-15" Style="{DynamicResource StyleLabel}" FontSize="18">-------------------</Label>
 
         </StackPanel>
 
         <StackPanel Grid.Row="2" Grid.Column="1" Grid.RowSpan="2" Style="{DynamicResource StyleStackPanel}">
             
-            <Label Margin="2,-16,2,-16" Style="{DynamicResource StyleLabel}" FontSize="18">------------------</Label>
+            <Label Margin="2,-16,2,-16" Style="{DynamicResource StyleLabel}" FontSize="18">-------------------</Label>
             <Label Margin="2,-4,2,-4" Style="{DynamicResource StyleLabel}" Name="LabelType" FontSize="18" HorizontalAlignment="Center">Type</Label>
-            <Label Margin="2,-16,2,-16" Style="{DynamicResource StyleLabel}" FontSize="20">------------------</Label>
-            <Label Margin="2,-4,2,-4" Style="{DynamicResource StyleLabel}" Name="LabelHp" FontSize="18">Hp:</Label>
-            <Label Margin="2,-4,2,-4" Style="{DynamicResource StyleLabel}" Name="LabelSpeed" FontSize="18">Speed:</Label>
-            <Label Margin="2,-4,2,-4" Style="{DynamicResource StyleLabel}" Name="LabelSpecial" FontSize="18">Special:</Label>
+            <Label Margin="2,-16,2,-16" Style="{DynamicResource StyleLabel}" FontSize="20">-------------------</Label>
+            <Label Margin="2,-4,2,-4" Style="{DynamicResource StyleLabel}" Name="LabelHp" FontSize="18">Hp</Label>
+            <Label Margin="2,-4,2,-4" Style="{DynamicResource StyleLabel}" Name="LabelSpeed" FontSize="18">Speed</Label>
+            <Label Margin="2,-4,2,-4" Style="{DynamicResource StyleLabel}" Name="LabelSpecial" FontSize="18">Special</Label>
 
         </StackPanel>
 
