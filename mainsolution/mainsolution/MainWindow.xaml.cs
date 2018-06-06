@@ -75,9 +75,10 @@ namespace mainsolution {
             if (SelectedCrip is CripDefender) {
                 SelectedCrip.ElipseModel.Stroke = new SolidColorBrush(Colors.LightSeaGreen);
             }
-
-            SliderChange.Value = 0;     
+  
             SelectedCrip = null;
+            SliderChange.Value = SliderChange.Minimum;
+            LabelHpToCepacityPrew.Content = "200 / 50";
 
             LabelType.Content = "Type";
             LabelHp.Content = "Hp";
@@ -88,8 +89,7 @@ namespace mainsolution {
 
         private void ElipseModel_MouseEnter(object sender, MouseEventArgs e) {
 
-            if(SelectedCrip != null)
-            SliderChange.Value = SelectedCrip.Speed;
+            
 
             if (SelectedCrip is CripWorker) {
                 SelectedCrip.ElipseModel.Stroke = new SolidColorBrush(Colors.DarkOrchid);
@@ -120,6 +120,7 @@ namespace mainsolution {
                 LabelSpecial.Content = "Attack: " + (SelectedCrip as CripDefender).Attack;
             }
 
+            SliderChange.Value = SelectedCrip.Speed;
             SelectedCrip.ElipseModel.Stroke = new SolidColorBrush(Colors.Gold);
 
 
