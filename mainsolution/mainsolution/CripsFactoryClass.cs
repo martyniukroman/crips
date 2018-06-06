@@ -30,6 +30,17 @@ namespace mainsolution {
         public CripsAboveClass(){
             IndeficatorCounter++;
         }
+        public Ellipse GetEllipse() {
+            Ellipse e = new Ellipse();
+
+            e.Fill = ElipseModel.Fill.Clone();
+            e.Stroke = ElipseModel.Stroke.Clone() ;
+
+            e.StrokeThickness = ElipseModel.StrokeThickness;
+            e.StrokeDashArray = ElipseModel.StrokeDashArray.Clone();
+            e.StrokeDashCap = ElipseModel.StrokeDashCap;
+            return e;
+        }
     }
 
     /*
@@ -125,7 +136,7 @@ namespace mainsolution {
             Location.Y = 50;
 
             Hp = 200;
-            Speed = 500;
+            Speed = 50;
             Attack = 50;
 
             ElipseModel = new Ellipse();

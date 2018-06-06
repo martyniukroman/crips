@@ -85,6 +85,15 @@ namespace mainsolution {
             LabelSpecial.Content = "Special";
             LabelSpeed.Content = "Speed";
 
+            // Preview Ellipse
+            EllipsePreview.Fill = new SolidColorBrush(Colors.LightGray);
+            EllipsePreview.Stroke = new SolidColorBrush(Colors.Gray);
+
+            EllipsePreview.StrokeThickness = 8;
+            EllipsePreview.StrokeDashArray = new DoubleCollection() { 2 };
+            EllipsePreview.StrokeDashCap = PenLineCap.Triangle;
+            //
+
         }
 
         private void ElipseModel_MouseEnter(object sender, MouseEventArgs e) {
@@ -121,6 +130,16 @@ namespace mainsolution {
             }
 
             SliderChange.Value = SelectedCrip.Speed;
+
+            // Preview Ellipse
+            EllipsePreview.Fill = SelectedCrip.ElipseModel.Fill.Clone();
+            EllipsePreview.Stroke = SelectedCrip.ElipseModel.Stroke.Clone();
+
+            EllipsePreview.StrokeThickness = SelectedCrip.ElipseModel.StrokeThickness;
+            EllipsePreview.StrokeDashArray = SelectedCrip.ElipseModel.StrokeDashArray.Clone();
+            EllipsePreview.StrokeDashCap = SelectedCrip.ElipseModel.StrokeDashCap;
+            //
+
             SelectedCrip.ElipseModel.Stroke = new SolidColorBrush(Colors.Gold);
 
 
