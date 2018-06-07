@@ -89,7 +89,7 @@ namespace mainsolution {
 
             Absorbed = 0;
             Hp = 200;
-            Speed = 50;
+            Speed = 10;
             Cepacity = 50;
 
             ElipseModel = new Ellipse();
@@ -120,7 +120,7 @@ namespace mainsolution {
             Location.Y = 50;
 
             Hp = 200;
-            Speed = 50;
+            Speed = 10;
             Attack = 50;
 
             ElipseModel = new Ellipse();
@@ -151,7 +151,7 @@ namespace mainsolution {
             Location.Y = 50;
 
             Hp = 200;
-            Speed = 50;
+            Speed = 10;
             Attack = 50;
 
             ElipseModel = new Ellipse();

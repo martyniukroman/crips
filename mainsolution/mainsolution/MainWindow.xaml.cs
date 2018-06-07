@@ -39,8 +39,8 @@ namespace mainsolution {
             //CripWorker test = new CripWorker();
             // mainelipse = test.ElipseModel;
 
-            TimerCallback Tm = new TimerCallback(TimersAction);
-            Timer timer = new Timer(Tm, SelectedCrip, 5000, 2000);
+            //TimerCallback Tm = new TimerCallback(TimersAction);
+           // Timer timer = new Timer(Tm, SelectedCrip, 2000, 2000);
             
         }
 
@@ -66,6 +66,13 @@ namespace mainsolution {
             Canvas.SetLeft(Ellipses.Last(), 10 * Counter * 5); // set positon
 
             this.Title += CripTmp.Indeficator;
+
+            Task.Run(() => {
+                while (true) {
+                    Thread.Sleep(10);
+                    TimersAction(null);
+                }
+            });
         }
 
         private void ElipseModel_MouseRightButtonDown(object sender, MouseButtonEventArgs e) {
@@ -82,7 +89,7 @@ namespace mainsolution {
   
             SelectedCrip = null;
             SliderChange.Value = SliderChange.Minimum;
-            LabelHpToCepacityPrew.Content = "200 / 50";
+            LabelHpToCepacityPrew.Content = "50 / 10";
 
             LabelType.Content = "Type";
             LabelHp.Content = "Hp";
@@ -173,11 +180,13 @@ namespace mainsolution {
 
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e) {
 
+            /*
+
             if (SelectedCrip != null) {
 
-                int max = 250;
+                int max = 50;
 
-                SelectedCrip.Hp = max - Convert.ToInt32((sender as Slider).Value);
+                SelectedCrip.Hp = max - Convert.ToInt32((sender as Slider).Value) + 150;
                 SelectedCrip.Speed = Convert.ToInt32((sender as Slider).Value);
 
                 LabelHpToCepacityPrew.Content = SelectedCrip.Hp + " / " + SelectedCrip.Speed;
@@ -185,11 +194,22 @@ namespace mainsolution {
             else {
                 //LabelHpToCepacityPrew.Content = "200 / 50";
             }
+
+        */
+
         }
 
         public void TimersAction(object obj) {
 
-            move();
+            try {
+                this.Dispatcher.Invoke(() => {
+                    move();
+                });
+            }
+            catch (Exception ex) {
+
+            }
+
 
         }
 
@@ -202,8 +222,8 @@ namespace mainsolution {
         public void move() {
             if (SelectedCrip != null) {
                 //MessageBox.Show("as");
-                Canvas.SetTop(SelectedCrip.ElipseModel, SelectedCrip.Location.X += 10);
-                Canvas.SetLeft(SelectedCrip.ElipseModel, SelectedCrip.Location.Y += 10);
+                Canvas.SetTop(SelectedCrip.ElipseModel, SelectedCrip.Location.X++);
+                Canvas.SetLeft(SelectedCrip.ElipseModel, SelectedCrip.Location.Y++);
             }
         } 
 
